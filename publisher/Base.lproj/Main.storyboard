@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.8" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3dL-Tt-TV9">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
+        <capability name="Constraints with attributes relative to the layout margin" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--記事一覧-->
+        <scene sceneID="izx-3Z-lnf">
+            <objects>
+                <tableViewController id="1KM-rk-TJO" customClass="ArticlesViewController" customModule="publisher" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="rVw-tD-t1y">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ArticleCell" textLabel="GWm-Rp-yxU" detailTextLabel="jnc-SI-hVj" style="IBUITableViewCellStyleValue1" id="VsV-qV-fEx">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VsV-qV-fEx" id="7Rp-Lo-YhJ">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GWm-Rp-yxU">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jnc-SI-hVj">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="1KM-rk-TJO" id="KTS-xB-Auu"/>
+                            <outlet property="delegate" destination="1KM-rk-TJO" id="24W-kl-z6h"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems>
+                        <barButtonItem systemItem="compose" id="u6f-Yk-Qnc">
+                            <connections>
+                                <action selector="newArticle:" destination="1KM-rk-TJO" id="jUf-12-xgz"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="pca-3M-7vs"/>
+                        <barButtonItem title="配信" id="atr-RL-P7t">
+                            <connections>
+                                <action selector="PublishAction:" destination="1KM-rk-TJO" id="0bF-fi-Ref"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="記事一覧" id="vyB-EQ-e69"/>
+                    <connections>
+                        <outlet property="newArticleButton" destination="u6f-Yk-Qnc" id="p3h-Eq-YU6"/>
+                        <outlet property="publishButton" destination="atr-RL-P7t" id="WDt-X2-iMW"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CfQ-aI-nuf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1431" y="1016"/>
+        </scene>
+        <!--Kindle 管理-->
+        <scene sceneID="0mY-75-u3h">
+            <objects>
+                <tableViewController id="dJ0-O3-yt1" customClass="KindlesViewController" customModule="publisher" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="lEZ-QB-2Km">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="KindleCell" textLabel="VDR-9V-uNE" detailTextLabel="zbz-XC-Yju" style="IBUITableViewCellStyleSubtitle" id="4Gp-wQ-Vr5">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Gp-wQ-Vr5" id="m0m-jt-m9p">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VDR-9V-uNE">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zbz-XC-Yju">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="dJ0-O3-yt1" id="QfS-pq-L9E"/>
+                            <outlet property="delegate" destination="dJ0-O3-yt1" id="nE0-8b-uuv"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems>
+                        <barButtonItem systemItem="add" id="MrZ-Lh-uhH">
+                            <connections>
+                                <action selector="newKindle:" destination="dJ0-O3-yt1" id="vTf-gL-ApR"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Kindle 管理" id="RKF-77-J3U">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="U2y-Gn-N3A">
+                            <connections>
+                                <action selector="cancelAction:" destination="dJ0-O3-yt1" id="Vka-hZ-eYa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="newKindleButton" destination="MrZ-Lh-uhH" id="Y8Z-Vp-WxH"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gSm-aK-TeG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2380" y="190"/>
+        </scene>
+        <!--新しい Kindle の登録-->
+        <scene sceneID="2s7-EC-qkS">
+            <objects>
+                <tableViewController id="iN0-KV-xvI" customClass="NewKindleViewController" customModule="publisher" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="gRg-7K-2yK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="wPU-nV-kWq">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ym3-0r-YHz">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ym3-0r-YHz" id="YYi-Ay-1kC">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="端末名" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D6Z-dY-I1d">
+                                                    <rect key="frame" x="8" y="7" width="584" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="D6Z-dY-I1d" firstAttribute="trailing" secondItem="YYi-Ay-1kC" secondAttribute="trailingMargin" id="6ed-r3-yDN"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="D6Z-dY-I1d" secondAttribute="bottom" constant="-1" id="G4u-gx-JbK"/>
+                                                <constraint firstItem="D6Z-dY-I1d" firstAttribute="leading" secondItem="YYi-Ay-1kC" secondAttribute="leadingMargin" id="gjA-MS-zAZ"/>
+                                                <constraint firstItem="D6Z-dY-I1d" firstAttribute="top" secondItem="YYi-Ay-1kC" secondAttribute="topMargin" constant="-1" id="pe7-Vb-y4w"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1F8-42-mod">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1F8-42-mod" id="SO6-wd-PJr">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Send-to-Kindle Eメールアドレス" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zew-Zh-ghK">
+                                                    <rect key="frame" x="8" y="7" width="584" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="zew-Zh-ghK" secondAttribute="bottom" constant="-1" id="2iu-hF-cjb"/>
+                                                <constraint firstItem="zew-Zh-ghK" firstAttribute="leading" secondItem="SO6-wd-PJr" secondAttribute="leadingMargin" id="WU8-PS-dcj"/>
+                                                <constraint firstItem="zew-Zh-ghK" firstAttribute="trailing" secondItem="SO6-wd-PJr" secondAttribute="trailingMargin" id="Wro-Te-4FX"/>
+                                                <constraint firstItem="zew-Zh-ghK" firstAttribute="top" secondItem="SO6-wd-PJr" secondAttribute="topMargin" constant="-1" id="ZoL-9D-CGK"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="iN0-KV-xvI" id="YOM-vG-Rl0"/>
+                            <outlet property="delegate" destination="iN0-KV-xvI" id="m0L-uH-Zyd"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="新しい Kindle の登録" id="ohq-F6-mDJ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="GC4-Bm-im1">
+                            <connections>
+                                <action selector="cancelAction:" destination="iN0-KV-xvI" id="79r-im-pxG"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="u4Q-cD-V1t">
+                            <connections>
+                                <action selector="doneAction:" destination="iN0-KV-xvI" id="iOi-kN-Z11"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="emailTextField" destination="zew-Zh-ghK" id="81V-Cg-x6B"/>
+                        <outlet property="nameTextField" destination="D6Z-dY-I1d" id="700-bh-kOJ"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6i3-dY-ycn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3192" y="-562"/>
+        </scene>
+        <!--Kindle 情報の編集-->
+        <scene sceneID="WSl-9S-bd9">
+            <objects>
+                <tableViewController id="6jY-Aw-1fB" customClass="EditKindleViewController" customModule="publisher" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9BK-B4-i1w">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="oK4-GD-N71">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="PKQ-Ec-yVn">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PKQ-Ec-yVn" id="oDn-hV-kGM">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="端末名" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gfe-1E-oPq">
+                                                    <rect key="frame" x="8" y="7" width="584" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gfe-1E-oPq" firstAttribute="top" secondItem="oDn-hV-kGM" secondAttribute="topMargin" constant="-1" id="11X-fh-omg"/>
+                                                <constraint firstItem="gfe-1E-oPq" firstAttribute="leading" secondItem="oDn-hV-kGM" secondAttribute="leadingMargin" id="78R-bS-738"/>
+                                                <constraint firstItem="gfe-1E-oPq" firstAttribute="trailing" secondItem="oDn-hV-kGM" secondAttribute="trailingMargin" id="DYn-b9-Jya"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="gfe-1E-oPq" secondAttribute="bottom" constant="-1" id="sp9-Rz-K0W"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Zjs-QX-aKK">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zjs-QX-aKK" id="tgd-S1-j8x">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="端末名" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g3S-1c-tbB">
+                                                    <rect key="frame" x="8" y="7" width="584" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="g3S-1c-tbB" firstAttribute="trailing" secondItem="tgd-S1-j8x" secondAttribute="trailingMargin" id="1C5-HD-JUa"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="g3S-1c-tbB" secondAttribute="bottom" constant="-1" id="NDh-Iu-0WC"/>
+                                                <constraint firstItem="g3S-1c-tbB" firstAttribute="leading" secondItem="tgd-S1-j8x" secondAttribute="leadingMargin" id="a5a-Zv-b8Q"/>
+                                                <constraint firstItem="g3S-1c-tbB" firstAttribute="top" secondItem="tgd-S1-j8x" secondAttribute="topMargin" constant="-1" id="prv-R2-ttw"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="6jY-Aw-1fB" id="wJ2-2r-0BL"/>
+                            <outlet property="delegate" destination="6jY-Aw-1fB" id="Yt0-k1-3Rh"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Kindle 情報の編集" id="YaZ-CP-gkn">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Y72-U0-bMT">
+                            <connections>
+                                <action selector="doneAction:" destination="6jY-Aw-1fB" id="npN-HW-K2w"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="emailTextField" destination="g3S-1c-tbB" id="Poi-XE-rYr"/>
+                        <outlet property="nameTextField" destination="gfe-1E-oPq" id="0x5-bb-bTy"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JWL-au-xD3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4048" y="156"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="OE8-fh-Y1T">
+            <objects>
+                <navigationController storyboardIdentifier="EditKindleNavController" id="5ks-7I-vxB" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="b7Y-Kr-Ntn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="6jY-Aw-1fB" kind="relationship" relationship="rootViewController" id="Vau-3H-iU4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ceF-sy-ZQd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3228" y="156"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Yl6-tz-6VF">
+            <objects>
+                <navigationController storyboardIdentifier="NewKindleNavController" id="DzO-eC-ZGm" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="y0G-ML-7ON">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="iN0-KV-xvI" kind="relationship" relationship="rootViewController" id="dF8-Cz-0hd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5uO-nO-dft" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2372" y="-562"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="CCn-fF-xVt">
+            <objects>
+                <navigationController storyboardIdentifier="KindlesNavController" toolbarHidden="NO" id="iAa-dM-CqF" sceneMemberID="viewController">
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iEA-DQ-7Hk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" id="bqR-Q3-GVM">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="dJ0-O3-yt1" kind="relationship" relationship="rootViewController" id="2p4-Fj-vAC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E9i-U4-OHE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1560" y="190"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="heZ-d3-rq1">
+            <objects>
+                <navigationController storyboardIdentifier="EditArticleNavController" id="5uM-ef-Zrf" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ybB-aH-N0W">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="tAX-nB-lNS" kind="relationship" relationship="rootViewController" id="Tdh-KM-fVg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cry-Hw-mXS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2246" y="880"/>
+        </scene>
+        <!--記事の編集-->
+        <scene sceneID="Jzo-ua-o6L">
+            <objects>
+                <tableViewController id="tAX-nB-lNS" customClass="EditArticleViewController" customModule="publisher" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="TbT-jX-0H2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="pyw-1e-2bN">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditTitleCell" id="wBC-Po-E9N" customClass="EditTitleCell" customModule="publisher" customModuleProvider="target">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wBC-Po-E9N" id="cQy-r0-6xB">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="タイトル" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JjL-R9-eTr">
+                                                    <rect key="frame" x="8" y="7" width="584" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="JjL-R9-eTr" firstAttribute="top" secondItem="cQy-r0-6xB" secondAttribute="topMargin" constant="-1" id="Onl-2X-a1e"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="JjL-R9-eTr" secondAttribute="bottom" constant="-1" id="lry-3I-HbD"/>
+                                                <constraint firstItem="JjL-R9-eTr" firstAttribute="trailing" secondItem="cQy-r0-6xB" secondAttribute="trailingMargin" id="toM-Hg-AKu"/>
+                                                <constraint firstItem="JjL-R9-eTr" firstAttribute="leading" secondItem="cQy-r0-6xB" secondAttribute="leadingMargin" id="xxB-uO-4hL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditContentCell" rowHeight="200" id="PyW-gy-TOg" customClass="EditContentCell" customModule="publisher" customModuleProvider="target">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PyW-gy-TOg" id="YEk-Dz-NDW">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="olM-3p-5eH">
+                                                    <rect key="frame" x="8" y="8" width="584" height="284"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="olM-3p-5eH" firstAttribute="bottom" secondItem="YEk-Dz-NDW" secondAttribute="bottomMargin" id="3ls-2d-tvI"/>
+                                                <constraint firstItem="olM-3p-5eH" firstAttribute="top" secondItem="YEk-Dz-NDW" secondAttribute="topMargin" id="gUP-oU-kzf"/>
+                                                <constraint firstItem="olM-3p-5eH" firstAttribute="trailing" secondItem="YEk-Dz-NDW" secondAttribute="trailingMargin" id="kOr-Am-uMO"/>
+                                                <constraint firstItem="olM-3p-5eH" firstAttribute="leading" secondItem="YEk-Dz-NDW" secondAttribute="leadingMargin" id="neN-1h-jZ2"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="tAX-nB-lNS" id="rtH-eT-XiX"/>
+                            <outlet property="delegate" destination="tAX-nB-lNS" id="Q0q-yH-eZv"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="記事の編集" id="Scj-mT-zxI">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Ran-fV-Xwv">
+                            <connections>
+                                <action selector="doneAction:" destination="tAX-nB-lNS" id="ywP-GH-jSK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="contentTextView" destination="olM-3p-5eH" id="xJi-s1-rs9"/>
+                        <outlet property="titleTextField" destination="JjL-R9-eTr" id="cpF-DF-ucN"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FFA-OX-UGf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2936" y="880"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="d07-Rk-pPS">
+            <objects>
+                <navigationController storyboardIdentifier="NewArticleNavController" id="KDW-UZ-9VP" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tER-CJ-Yjg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="7W4-Po-L7o" kind="relationship" relationship="rootViewController" id="HsT-XF-eFh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j44-wF-cBg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1585" y="1735"/>
+        </scene>
+        <!--新しい記事-->
+        <scene sceneID="cNw-c8-BeP">
+            <objects>
+                <tableViewController id="7W4-Po-L7o" customClass="NewArticleViewController" customModule="publisher" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="lXN-NZ-f3e">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="FUB-QT-rvH">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditTitleCell" id="WeF-rM-fZG" customClass="EditTitleCell" customModule="publisher" customModuleProvider="target">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WeF-rM-fZG" id="9GO-8c-o8D">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="タイトル" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rZ9-ro-KaJ">
+                                                    <rect key="frame" x="8" y="7" width="584" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="rZ9-ro-KaJ" firstAttribute="trailing" secondItem="9GO-8c-o8D" secondAttribute="trailingMargin" id="1zf-Oq-wgn"/>
+                                                <constraint firstItem="rZ9-ro-KaJ" firstAttribute="top" secondItem="9GO-8c-o8D" secondAttribute="topMargin" constant="-1" id="5mt-eR-cdk"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="rZ9-ro-KaJ" secondAttribute="bottom" constant="-1" id="5ny-QR-YmR"/>
+                                                <constraint firstItem="rZ9-ro-KaJ" firstAttribute="leading" secondItem="9GO-8c-o8D" secondAttribute="leadingMargin" id="xRQ-s0-hYd"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditContentCell" rowHeight="200" id="Hcd-SN-1w3" customClass="EditContentCell" customModule="publisher" customModuleProvider="target">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hcd-SN-1w3" id="UqI-Vf-2gZ">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BT8-wm-PZk">
+                                                    <rect key="frame" x="8" y="8" width="584" height="284"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="BT8-wm-PZk" firstAttribute="trailing" secondItem="UqI-Vf-2gZ" secondAttribute="trailingMargin" id="91u-uY-GDs"/>
+                                                <constraint firstItem="BT8-wm-PZk" firstAttribute="top" secondItem="UqI-Vf-2gZ" secondAttribute="topMargin" id="Rdu-oJ-WXE"/>
+                                                <constraint firstItem="BT8-wm-PZk" firstAttribute="leading" secondItem="UqI-Vf-2gZ" secondAttribute="leadingMargin" id="la7-U0-hXR"/>
+                                                <constraint firstItem="BT8-wm-PZk" firstAttribute="bottom" secondItem="UqI-Vf-2gZ" secondAttribute="bottomMargin" id="ubt-fU-WHR"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="7W4-Po-L7o" id="9sY-KW-ZfM"/>
+                            <outlet property="delegate" destination="7W4-Po-L7o" id="gAa-Kx-g9h"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="新しい記事" id="itu-Bo-R5r">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="B1Y-eX-DUh">
+                            <connections>
+                                <action selector="cancelAction:" destination="7W4-Po-L7o" id="IVj-la-Umy"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="BwI-cq-2na">
+                            <connections>
+                                <action selector="doneAction:" destination="7W4-Po-L7o" id="Jjw-KT-rMc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="contentTextView" destination="BT8-wm-PZk" id="mmw-Ig-MN1"/>
+                        <outlet property="titleTextField" destination="rZ9-ro-KaJ" id="sLw-N8-oYC"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="phO-D1-WVt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2282" y="1735"/>
+        </scene>
+        <!--本棚-->
+        <scene sceneID="mxD-HR-V0W">
+            <objects>
+                <tableViewController id="WNZ-AP-dHf" customClass="BooksViewController" customModule="publisher" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="nzh-bb-0mM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BookCell" textLabel="Ldt-Nv-z65" style="IBUITableViewCellStyleDefault" id="znv-KS-IWV">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="znv-KS-IWV" id="nTm-2I-EUf">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ldt-Nv-z65">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="WNZ-AP-dHf" id="6aP-za-lzN"/>
+                            <outlet property="delegate" destination="WNZ-AP-dHf" id="UxV-za-S2p"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="Kindle 管理" id="uz0-Yi-dlS">
+                            <connections>
+                                <action selector="manageKindle:" destination="WNZ-AP-dHf" id="0vz-OH-Sgv"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="本棚" id="JCe-c3-GxV">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="Vn0-9v-RbI">
+                            <connections>
+                                <action selector="newBook:" destination="WNZ-AP-dHf" id="nRv-q0-RCA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="manageKindleButton" destination="uz0-Yi-dlS" id="VMH-Uk-N2I"/>
+                        <outlet property="newBookButton" destination="Vn0-9v-RbI" id="UYa-nf-oed"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="arN-LL-dsc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="710" y="190"/>
+        </scene>
+        <!--新しい本-->
+        <scene sceneID="9f4-V1-jv5">
+            <objects>
+                <tableViewController id="uBp-Xw-nJ3" customClass="NewBookViewController" customModule="publisher" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4v9-Dj-JJN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="zNs-Tu-ms1">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="991-9G-Nyn">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="991-9G-Nyn" id="gdB-TT-Udg">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="タイトル" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="434-QD-xbB">
+                                                    <rect key="frame" x="8" y="7" width="584" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="434-QD-xbB" secondAttribute="bottom" constant="-1" id="ObC-zj-chd"/>
+                                                <constraint firstItem="434-QD-xbB" firstAttribute="top" secondItem="gdB-TT-Udg" secondAttribute="topMargin" constant="-1" id="Xo9-PO-UKN"/>
+                                                <constraint firstItem="434-QD-xbB" firstAttribute="leading" secondItem="gdB-TT-Udg" secondAttribute="leadingMargin" id="hYA-OY-gx9"/>
+                                                <constraint firstItem="434-QD-xbB" firstAttribute="trailing" secondItem="gdB-TT-Udg" secondAttribute="trailingMargin" id="xfo-B4-rD3"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="uBp-Xw-nJ3" id="U9p-E7-ZQC"/>
+                            <outlet property="delegate" destination="uBp-Xw-nJ3" id="PEZ-Mo-43e"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="新しい本" id="iin-oT-PVt">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="N7P-cv-WYD">
+                            <connections>
+                                <action selector="cancelAction:" destination="uBp-Xw-nJ3" id="74v-gJ-h5Z"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="fqD-Wo-Yqh">
+                            <connections>
+                                <action selector="doneAction:" destination="uBp-Xw-nJ3" id="k3F-2F-Ocm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="titleTextField" destination="434-QD-xbB" id="9lZ-fk-bVC"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vUh-Ck-Cos" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1544" y="-554"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Req-D8-8H2">
+            <objects>
+                <navigationController storyboardIdentifier="NewBookNavController" id="be6-MN-kdf" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8lh-RS-ql3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="uBp-Xw-nJ3" kind="relationship" relationship="rootViewController" id="IHz-uR-hvh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xTc-lU-fZG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="724" y="-554"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="B0F-9O-Bp0">
+            <objects>
+                <navigationController toolbarHidden="NO" id="3dL-Tt-TV9" sceneMemberID="viewController">
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MRh-dZ-OFx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="A4a-hR-HMx">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="WNZ-AP-dHf" kind="relationship" relationship="rootViewController" id="KJG-0S-QRb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YhT-id-iYQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-112" y="190"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="02T-WC-smM">
+            <objects>
+                <navigationController storyboardIdentifier="ArticlesNavController" toolbarHidden="NO" id="6U9-qt-4mo" sceneMemberID="viewController">
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cfB-iy-tce">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="5h0-pX-fA8">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="1KM-rk-TJO" kind="relationship" relationship="rootViewController" id="3Ym-76-g6N"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LpB-Cz-Pcn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="734" y="1016"/>
+        </scene>
+    </scenes>
+</document>
